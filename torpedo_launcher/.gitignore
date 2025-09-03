@@ -1,2 +1,5 @@
 /.venv
 /bounding_boxes/data
+
+/stereovision/stereo
+/stereovision/imgs
