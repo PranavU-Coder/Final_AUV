@@ -2,7 +2,7 @@ import numpy as np
 import cv2 as cv
 import glob
 
-chessBoardSize = (9,6)
+chessBoardSize = (7,7)
 frameSize = (640,480)
 
 # THE TERMINATION CRITERIA NEEDED (AS GIVEN IN OPENCV'S DOCUMENTATION)
@@ -14,7 +14,7 @@ objp[:,:2] = np.mgrid[0:chessBoardSize[0],0:chessBoardSize[1]].T.reshape(-1,2)
 
 # SUBJECT TO CHANGE
 
-objp = objp * 20
+objp = objp * 18
 
 print(objp)
 
@@ -22,8 +22,8 @@ objpoints = [] # ALL THE 3D POINTS IN REAL WORLD SPACE
 imgpointsL = [] # 2D POINTS IN IMAGE PLANE
 imgpointsR = [] # 2D POINTS IN IMAGE PLANE
 
-imagesLeft = glob.glob('images/stereoLeft/*.png')
-imagesRight = glob.glob('images/stereoRight/*.png')
+imagesLeft = glob.glob('images/stereoLeft/imageL0.png')
+imagesRight = glob.glob('images/stereoRight/imageR0.png')
 
 for imgLeft , imgRight in zip (imagesLeft, imagesRight):
 
@@ -105,7 +105,7 @@ cv_file = cv.FileStorage('stereoMap.xml',cv.FILE_STORAGE_WRITE)
 
 cv_file.write('stereoMapL_x',stereoMapL[0])
 cv_file.write('stereoMapL_y',stereoMapL[1])
-cv_file.write('stereoMapR_x',stereoMapL[0])
-cv_file.write('stereoMapR_y',stereoMapL[1])
+cv_file.write('stereoMapR_x',stereoMapR[0])
+cv_file.write('stereoMapR_y',stereoMapR[1])
 
 cv_file.release()

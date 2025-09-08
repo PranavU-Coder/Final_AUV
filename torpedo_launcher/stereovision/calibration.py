@@ -11,7 +11,7 @@ stereoMapR_y = cv_file.getNode('stereoMapR_y').mat()
 
 def undistortRectify(frameL , frameR):
 
-    undistortedL = cv.remap(frameL, stereoMapL_x, stereoMapL_y, cv.INTER_LANCZOS4)
-    undistortedR = cv.remap(frameR, stereoMapR_x, stereoMapR_y, cv.INTER_LANCZOS4)
+    undistortedL = cv.remap(frameL, stereoMapL_x, stereoMapL_y, cv2.INTER_LANCZOS4)
+    undistortedR = cv.remap(frameR, stereoMapR_x, stereoMapR_y, cv2.INTER_LANCZOS4)
     
     return undistortedL, undistortedR
